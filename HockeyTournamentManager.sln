@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33403.182
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "DAL\DAL.csproj", "{460E7B4F-6441-4367-AE38-BAFB6972A37D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DAL", "DAL\DAL.csproj", "{460E7B4F-6441-4367-AE38-BAFB6972A37D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleInterface", "ConsoleInterface\ConsoleInterface.csproj", "{AAAF6F65-EF74-4BB4-9836-5AB7D50306E8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{460E7B4F-6441-4367-AE38-BAFB6972A37D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{460E7B4F-6441-4367-AE38-BAFB6972A37D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{460E7B4F-6441-4367-AE38-BAFB6972A37D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AAAF6F65-EF74-4BB4-9836-5AB7D50306E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AAAF6F65-EF74-4BB4-9836-5AB7D50306E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AAAF6F65-EF74-4BB4-9836-5AB7D50306E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AAAF6F65-EF74-4BB4-9836-5AB7D50306E8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

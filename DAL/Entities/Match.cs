@@ -9,9 +9,10 @@ namespace DAL.Entities
     internal class Match
     {
         public Guid MatchId { get; set; }
-        public Team FirstTeam { get; set; }
-        public Team SecondTeam { get; set; }
-        public MatchStatistic Stat { get; set; }
+        public virtual Team FirstTeam { get; set; } = null!;
+        public virtual Team SecondTeam { get; set; } = null!;
+        public virtual MatchStatistic StatOfFirstTeam { get; set; } = null!;
+        public virtual MatchStatistic StatOfSecondTeam { get; set; } = null!;
         public DateTimeOffset Date { get; set; }
-}
+    }
 }

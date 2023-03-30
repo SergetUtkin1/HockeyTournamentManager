@@ -9,6 +9,6 @@ namespace DAL.Entities
     internal class Infraction
     {
         public Guid InfractionId { get; set; }
-        public string InfractionName { get; set;}
+        public string InfractionName { get; set; } = null!;
     }
 }
