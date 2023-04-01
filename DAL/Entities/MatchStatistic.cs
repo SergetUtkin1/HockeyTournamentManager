@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace DAL.Entities
 {
-    internal class MatchStatistic
+    public class MatchStatistic
     {
-        public Guid StatId { get; set; }
+        public Guid MatchStatisticId { get; set; }
         public string WinType { get; set; } = null!;
         public virtual ICollection<Goal>? Goals { get; set; }
         public int Shots { get; set; }

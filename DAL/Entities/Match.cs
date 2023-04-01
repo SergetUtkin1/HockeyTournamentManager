@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Entities
 {
-    internal class Match
+    public class Match
     {
         public Guid MatchId { get; set; }
         public virtual Team FirstTeam { get; set; } = null!;

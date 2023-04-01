@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace DAL.Entities
 {
-    internal class TeamStatistic
+    public class TeamStatistic
     {
-        public Guid TeamStatId { get; set; }
+        public Guid TeamStatisticId { get; set; }
         public int Scores { get; set; } = 0;
         public int WinsAtRegularTime { get; set; } = 0;
         public int WinsAtOT { get; set; } = 0;

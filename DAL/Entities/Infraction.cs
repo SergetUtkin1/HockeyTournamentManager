@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Entities
 {
-    internal class Infraction
+    public class Infraction
     {
         public Guid InfractionId { get; set; }
         public string InfractionName { get; set; } = null!;
