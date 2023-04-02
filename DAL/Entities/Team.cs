@@ -10,8 +10,7 @@ namespace DAL.Entities
     {
         public Guid TeamId { get; set; }
         public string Name { get; set; } = null!;
-        public Guid TeamStatId { get; set; }
-        public virtual TeamStatistic TeamStatistic { get; set; } = null!;
+        public virtual TeamStatistic? TeamStatistic { get; set; } = null!;
         public virtual ICollection<Player>? Players { get; set; }
     }
 }
