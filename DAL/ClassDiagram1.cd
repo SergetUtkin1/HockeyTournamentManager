@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="DAL.Entities.Goal">
+    <Position X="6.75" Y="4.5" Width="1.5" />
+    <AssociationLine Name="Asist2" Type="DAL.Entities.Player" FixedFromPoint="true">
+      <Path>
+        <Point X="8.25" Y="5" />
+        <Point X="11.75" Y="5" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="Match" Type="DAL.Entities.Match" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="7.5" Y="4.5" />
+        <Point X="7.5" Y="2.875" />
+        <Point X="13.5" Y="2.875" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>gAAAIgAAAAAAAAAAgAAAAQAAAAAAAACgAAAAAAAAAQA=</HashCode>
+      <FileName>Entities\Goal.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Asist1" />
+      <Property Name="Asist2" />
+      <Property Name="Author" />
+      <Property Name="Match" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="DAL.Entities.Infraction">
+    <Position X="11.75" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAEAAAAgAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\Infraction.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DAL.Entities.Match">
+    <Position X="13.5" Y="2" Width="1.5" />
+    <AssociationLine Name="FirstTeam" Type="DAL.Entities.Team" FixedFromPoint="true">
+      <Path>
+        <Point X="14.562" Y="3.296" />
+        <Point X="14.562" Y="5.25" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="SecondTeam" Type="DAL.Entities.Team" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="15" Y="3.205" />
+        <Point X="15.531" Y="3.205" />
+        <Point X="15.531" Y="5.25" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="StatOfFirstTeam" Type="DAL.Entities.MatchStatistic" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="13.5" Y="2.25" />
+        <Point X="4.125" Y="2.25" />
+        <Point X="4.125" Y="5.688" />
+        <Point X="4.5" Y="5.688" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="StatOfSecondTeam" Type="DAL.Entities.MatchStatistic" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="13.5" Y="2.375" />
+        <Point X="5.656" Y="2.375" />
+        <Point X="5.656" Y="5.25" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAABAAAgAAAACEAAAAAAAAAAABAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\Match.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="FirstTeam" />
+      <Property Name="SecondTeam" />
+      <Property Name="StatOfFirstTeam" />
+      <Property Name="StatOfSecondTeam" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="DAL.Entities.MatchStatistic">
+    <Position X="4.5" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAQAAAAAAAAAAEAAAAQAAAAAAAAAAAAAAABIAA=</HashCode>
+      <FileName>Entities\MatchStatistic.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Goals" />
+      <Property Name="Penalties" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="DAL.Entities.Penalty">
+    <Position X="8" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAQAgAAA=</HashCode>
+      <FileName>Entities\Penalty.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Infraction" />
+      <Property Name="Player" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="DAL.Entities.Player">
+    <Position X="11.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAEAAAAQCBAAAAAAAEAIIAAAAIAA=</HashCode>
+      <FileName>Entities\Player.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Team" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="Assists" />
+      <Property Name="Goals" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="DAL.Entities.Team">
+    <Position X="14.5" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAAAAAAAAAAAAAAQCAAAgAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\Team.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="TeamStatistic" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="Players" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="DAL.Entities.TeamStatistic">
+    <Position X="14.75" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAAAAAAAgAAAgAQAAAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\TeamStatistic.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DAL.DataContext">
+    <Position X="7" Y="12" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABBACAAAAAAAAAAAACAQAAAAAAAgAAEAAAAAAAAAIAA=</HashCode>
+      <FileName>DataContext.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Microsoft.EntityFrameworkCore.DbContext" Collapsed="true">
+    <Position X="7" Y="10.5" Width="1.5" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

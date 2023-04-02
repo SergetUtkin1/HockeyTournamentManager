@@ -1,6 +1,9 @@
 ﻿using ConsoleInterface;
 using DAL;
 using DAL.Entities;
+using Microsoft.EntityFrameworkCore;
+using System.Linq;
+
 
 internal class Program
 {
@@ -8,12 +11,15 @@ internal class Program
 
     private static void PrintTeams(DataContext context)
     {
-        Console.WriteLine("Команда | кол-во очков");
-        var teams = context.Teams.ToList();
+        Console.WriteLine("|Команда | кол-во очков");
+        Console.WriteLine("+------------------------------------------------");
+        var teams = context.Teams.Include(t => t.TeamStatistic)
+            .OrderByDescending(t => t.TeamStatistic.Scores).ToList();
         foreach (var t in teams)
         {
-            Console.WriteLine($"{t.Name} {(t.TeamStatistic == null ? 0 : t.TeamStatistic.Scores)}");
+            Console.WriteLine($"|{t.Name} | {(t.TeamStatistic == null ? 0 : t.TeamStatistic.Scores)}");
         }
+        Console.WriteLine("+------------------------------------------------");
     }
 
     private static void AddTeam(DataContext context)
