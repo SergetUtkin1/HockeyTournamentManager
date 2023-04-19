@@ -15,7 +15,6 @@ namespace DAL
             
         }
         
-
         public DbSet<Goal> Goals => Set<Goal>();
         public DbSet<Infraction> Infractions => Set<Infraction>();
         public DbSet<Match> Matches => Set<Match>();
