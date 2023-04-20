@@ -1,0 +1,54 @@
+﻿@page
+@model HTM.WebApp.Pages.Hockey.TeamStatistics.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TeamStatistic[0].Scores)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TeamStatistic[0].WinsAtRegularTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TeamStatistic[0].WinsAtOT)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TeamStatistic[0].WinsAtShootOut)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.TeamStatistic) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Scores)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.WinsAtRegularTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.WinsAtOT)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.WinsAtShootOut)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.TeamStatisticId">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.TeamStatisticId">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.TeamStatisticId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

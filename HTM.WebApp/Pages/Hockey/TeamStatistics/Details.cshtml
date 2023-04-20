@@ -1,0 +1,43 @@
+﻿@page
+@model HTM.WebApp.Pages.Hockey.TeamStatistics.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>TeamStatistic</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TeamStatistic.Scores)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TeamStatistic.Scores)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TeamStatistic.WinsAtRegularTime)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TeamStatistic.WinsAtRegularTime)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TeamStatistic.WinsAtOT)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TeamStatistic.WinsAtOT)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TeamStatistic.WinsAtShootOut)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TeamStatistic.WinsAtShootOut)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.TeamStatistic?.TeamStatisticId">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>

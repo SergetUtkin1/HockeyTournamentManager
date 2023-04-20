@@ -1,0 +1,48 @@
+﻿@page
+@model HTM.WebApp.Pages.Hockey.MatchStatistics.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.MatchStatistic[0].WinType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MatchStatistic[0].Shots)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MatchStatistic[0].BlockedShots)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.MatchStatistic) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.WinType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Shots)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BlockedShots)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.MatchStatisticId">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.MatchStatisticId">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.MatchStatisticId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

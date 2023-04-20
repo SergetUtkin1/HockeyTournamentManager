@@ -1,0 +1,36 @@
+﻿@page
+@model HTM.WebApp.Pages.Hockey.Penalties.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Penalty[0].Minutes)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Penalty) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Minutes)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.PenaltyId">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.PenaltyId">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.PenaltyId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

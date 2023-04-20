@@ -1,0 +1,36 @@
+﻿@page
+@model HTM.WebApp.Pages.Hockey.Infractions.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Infraction[0].InfractionName)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Infraction) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.InfractionName)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.InfractionId">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.InfractionId">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.InfractionId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,54 @@
+﻿@page
+@model HTM.WebApp.Pages.Hockey.Goals.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Goal[0].Time)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Goal[0].IsEven)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Goal[0].IsPowerPlay)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Goal[0].IsShorthanded)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Goal) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Time)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsEven)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsPowerPlay)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsShorthanded)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.GoalId">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.GoalId">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.GoalId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
