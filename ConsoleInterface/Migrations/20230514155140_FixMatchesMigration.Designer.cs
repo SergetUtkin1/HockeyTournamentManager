@@ -3,6 +3,7 @@ using System;
 using DAL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace ConsoleInterface.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20230514155140_FixMatchesMigration")]
+    partial class FixMatchesMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -86,30 +89,30 @@ namespace ConsoleInterface.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
-                    b.Property<DateTime>("Date")
+                    b.Property<DateTimeOffset>("Date")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<Guid>("FirstTeamId")
                         .HasColumnType("uuid");
 
-                    b.Property<Guid?>("FirstTeamStatisticMatchStatisticId")
-                        .HasColumnType("uuid");
-
                     b.Property<Guid>("SecondTeamId")
                         .HasColumnType("uuid");
 
-                    b.Property<Guid?>("SecondTeamStatisticMatchStatisticId")
+                    b.Property<Guid>("StatOfFirstTeamMatchStatisticId")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("StatOfSecondTeamMatchStatisticId")
                         .HasColumnType("uuid");
 
                     b.HasKey("MatchId");
 
                     b.HasIndex("FirstTeamId");
 
-                    b.HasIndex("FirstTeamStatisticMatchStatisticId");
-
                     b.HasIndex("SecondTeamId");
 
-                    b.HasIndex("SecondTeamStatisticMatchStatisticId");
+                    b.HasIndex("StatOfFirstTeamMatchStatisticId");
+
+                    b.HasIndex("StatOfSecondTeamMatchStatisticId");
 
                     b.ToTable("Matches");
                 });
@@ -127,6 +130,7 @@ namespace ConsoleInterface.Migrations
                         .HasColumnType("integer");
 
                     b.Property<string>("WinType")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.HasKey("MatchStatisticId");
@@ -264,27 +268,31 @@ namespace ConsoleInterface.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("DAL.Entities.MatchStatistic", "FirstTeamStatistic")
-                        .WithMany()
-                        .HasForeignKey("FirstTeamStatisticMatchStatisticId");
-
                     b.HasOne("DAL.Entities.Team", "SecondTeam")
                         .WithMany()
                         .HasForeignKey("SecondTeamId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("DAL.Entities.MatchStatistic", "SecondTeamStatistic")
+                    b.HasOne("DAL.Entities.MatchStatistic", "StatOfFirstTeam")
                         .WithMany()
-                        .HasForeignKey("SecondTeamStatisticMatchStatisticId");
+                        .HasForeignKey("StatOfFirstTeamMatchStatisticId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("DAL.Entities.MatchStatistic", "StatOfSecondTeam")
+                        .WithMany()
+                        .HasForeignKey("StatOfSecondTeamMatchStatisticId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("FirstTeam");
 
-                    b.Navigation("FirstTeamStatistic");
-
                     b.Navigation("SecondTeam");
 
-                    b.Navigation("SecondTeamStatistic");
+                    b.Navigation("StatOfFirstTeam");
+
+                    b.Navigation("StatOfSecondTeam");
                 });
 
             modelBuilder.Entity("DAL.Entities.Penalty", b =>

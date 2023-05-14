@@ -36,6 +36,8 @@ namespace HTM.WebApp.Pages.Hockey.Matches
                 return NotFound();
             }
             Match = match;
+           ViewData["FirstTeamId"] = new SelectList(_context.Teams, "TeamId", "Name");
+           ViewData["SecondTeamId"] = new SelectList(_context.Teams, "TeamId", "Name");
             return Page();
         }
 

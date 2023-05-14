@@ -3,6 +3,7 @@ using System;
 using DAL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace ConsoleInterface.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20230514172458_FixMatches2Migration")]
+    partial class FixMatches2Migration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -92,13 +95,13 @@ namespace ConsoleInterface.Migrations
                     b.Property<Guid>("FirstTeamId")
                         .HasColumnType("uuid");
 
-                    b.Property<Guid?>("FirstTeamStatisticMatchStatisticId")
+                    b.Property<Guid>("FirstTeamStatisticMatchStatisticId")
                         .HasColumnType("uuid");
 
                     b.Property<Guid>("SecondTeamId")
                         .HasColumnType("uuid");
 
-                    b.Property<Guid?>("SecondTeamStatisticMatchStatisticId")
+                    b.Property<Guid>("SecondTeamStatisticMatchStatisticId")
                         .HasColumnType("uuid");
 
                     b.HasKey("MatchId");
@@ -127,6 +130,7 @@ namespace ConsoleInterface.Migrations
                         .HasColumnType("integer");
 
                     b.Property<string>("WinType")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.HasKey("MatchStatisticId");
@@ -266,7 +270,9 @@ namespace ConsoleInterface.Migrations
 
                     b.HasOne("DAL.Entities.MatchStatistic", "FirstTeamStatistic")
                         .WithMany()
-                        .HasForeignKey("FirstTeamStatisticMatchStatisticId");
+                        .HasForeignKey("FirstTeamStatisticMatchStatisticId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("DAL.Entities.Team", "SecondTeam")
                         .WithMany()
@@ -276,7 +282,9 @@ namespace ConsoleInterface.Migrations
 
                     b.HasOne("DAL.Entities.MatchStatistic", "SecondTeamStatistic")
                         .WithMany()
-                        .HasForeignKey("SecondTeamStatisticMatchStatisticId");
+                        .HasForeignKey("SecondTeamStatisticMatchStatisticId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("FirstTeam");
 

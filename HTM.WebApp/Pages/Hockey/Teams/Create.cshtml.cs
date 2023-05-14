@@ -31,10 +31,10 @@ namespace HTM.WebApp.Pages.Hockey.Teams
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
         {
-          if (!ModelState.IsValid || _context.Teams == null || Team == null)
-            {
+          if (_context.Teams == null || Team == null)
+          {
                 return Page();
-            }
+          }
 
             _context.Teams.Add(Team);
             await _context.SaveChangesAsync();

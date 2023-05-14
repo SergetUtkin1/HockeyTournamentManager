@@ -25,7 +25,9 @@ namespace HTM.WebApp.Pages.Hockey.Matches
         {
             if (_context.Matches != null)
             {
-                Match = await _context.Matches.ToListAsync();
+                Match = await _context.Matches
+                .Include(m => m.FirstTeam)
+                .Include(m => m.SecondTeam).ToListAsync();
             }
         }
     }

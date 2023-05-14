@@ -21,6 +21,8 @@ namespace HTM.WebApp.Pages.Hockey.Matches
 
         public IActionResult OnGet()
         {
+        ViewData["FirstTeamId"] = new SelectList(_context.Teams, "TeamId", "Name");
+        ViewData["SecondTeamId"] = new SelectList(_context.Teams, "TeamId", "Name");
             return Page();
         }
 
@@ -31,11 +33,13 @@ namespace HTM.WebApp.Pages.Hockey.Matches
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
         {
-          if (!ModelState.IsValid || _context.Matches == null || Match == null)
+          if (_context.Matches == null || Match == null)
             {
                 return Page();
             }
 
+
+            Match.Date = Match.Date?.ToUniversalTime();
             _context.Matches.Add(Match);
             await _context.SaveChangesAsync();
 

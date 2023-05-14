@@ -25,6 +25,8 @@ namespace HTM.WebApp
                     context.Database.Migrate();
                 }
             }
+
+            AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
             // Configure the HTTP request pipeline.
             if (!app.Environment.IsDevelopment())
             {

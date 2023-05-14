@@ -2,7 +2,7 @@
 @model HTM.WebApp.Pages.Hockey.Matches.IndexModel
 
 @{
-    ViewData["Title"] = "Match";
+    ViewData["Title"] = "Matches";
 }
 
 <h1>Matches</h1>
@@ -14,6 +14,12 @@
     <thead>
         <tr>
             <th>
+                @Html.DisplayNameFor(model => model.Match[0].FirstTeam)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Match[0].SecondTeam)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.Match[0].Date)
             </th>
             <th></th>
@@ -22,6 +28,12 @@
     <tbody>
 @foreach (var item in Model.Match) {
         <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstTeam.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SecondTeam.Name)
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Date)
             </td>
