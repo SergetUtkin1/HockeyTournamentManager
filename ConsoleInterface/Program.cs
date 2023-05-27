@@ -2,7 +2,6 @@
 using DAL;
 using DAL.Entities;
 using Microsoft.EntityFrameworkCore;
-using System.Linq;
 
 
 internal class Program
