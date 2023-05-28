@@ -16,10 +16,20 @@ internal class Program
             .OrderByDescending(t => t.TeamStatistic.Scores).ToList();
         foreach (var t in teams)
         {
-            Console.WriteLine($"|{t.Name} | {(t.TeamStatistic == null ? 0 : t.TeamStatistic.Scores)}");
+            if(t.TeamStatistic == null)
+            {
+                t.TeamStatistic = new TeamStatistic();
+                t.TeamStatistic.Scores = 0;
+                context.SaveChangesAsync();
+            }
         }
+
+        teams = teams.OrderByDescending(t => t.TeamStatistic!.Scores).ToList();
+        foreach (var t in teams)
+            Console.WriteLine($"|{t.Name} | {t.TeamStatistic!.Scores}");
         Console.WriteLine("+------------------------------------------------");
-    }
+    }   
+   
 
     private static void AddTeam(DataContext context)
     {

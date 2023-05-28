@@ -24,7 +24,7 @@ namespace HTM.WebApp.Pages.Hockey.Players
                 return NotFound();
             }
 
-            var player = await _context.Players.FirstOrDefaultAsync(m => m.PlayerId == id);
+            var player = await _context.Players.Include(p => p.Team).FirstOrDefaultAsync(m => m.PlayerId == id);
 
             if (player == null)
             {

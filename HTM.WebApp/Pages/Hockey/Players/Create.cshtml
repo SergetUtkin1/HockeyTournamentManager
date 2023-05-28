@@ -29,7 +29,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="Player.Number" class="control-label"></label>
-                <input asp-for="Player.Number" class="form-control" />
+                <input asp-for="Player.Number" class="form-control" max="99" min="1" />
                 <span asp-validation-for="Player.Number" class="text-danger"></span>
             </div>
             <div class="form-group">
